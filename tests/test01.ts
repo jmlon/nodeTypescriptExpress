@@ -1,6 +1,6 @@
 import chai, { expect } from 'chai';
 import chaiHttp from 'chai-http';
-import app from '../src/server';
+import { app } from '../src/app';
 
 chai.use(chaiHttp);
 chai.should();
@@ -32,7 +32,7 @@ describe("SERVER", () => {
     });
 
 
-    describe("json", () => {
+    describe("GET returns JSON", () => {
         it("Should return a json object", (done) => {
             chai.request(app)
             .get("/json")
@@ -60,7 +60,7 @@ describe("SERVER", () => {
     });
 
 
-    describe("post", () => {
+    describe("POST returns JSON", () => {
         it("Post request should add", (done) => {
             chai.request(app)
             .post("/post")
