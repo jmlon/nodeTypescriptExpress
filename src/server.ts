@@ -8,4 +8,4 @@ const server = app.listen(process.env.PORT, () => {
     console.log(`Server running at http://${process.env.HOST}:${process.env.PORT}`);
 });
 
-module.exports = server;
+// module.exports = server;

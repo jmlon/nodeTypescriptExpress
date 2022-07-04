@@ -1,29 +1,22 @@
-import { Server } from 'http';
 import request from 'supertest';
-// const app = require('../../src/app'); // Gives the famouos error: TypeError: app.address is not a function
-// const app = require('../../src/server');
 import { app } from '../../src/app';
 
 describe('Web services work', () => {
 
-    let server: Server|null = null;
+    // TODO Code to run before the tests
+    // beforeAll(() => {}); 
 
-    beforeAll((done) => {
-        // Setup envinronment, e.g. database
-        server = app.listen(process.env.PORT, () => {
-            console.log(`Server running at http://${process.env.HOST}:${process.env.PORT}`);
-            done();
-        });
-        
-    });
+    // TODO Code to run after the tests
+    // afterAll(() => {}); 
 
-    afterAll(async () => {
-        await server?.close();
-    });
+    // TODO Code to run before each test
+    // beforeEach(() => {});
 
+    // TODO Code to run after each test
+    // afterEach( () => {});
 
     // Implemented using done
-    test('Root', (done)=>{
+    test('GET /', (done)=>{
         request(app)
         .get("/")
         .then(response => {
@@ -36,9 +29,8 @@ describe('Web services work', () => {
         });
     });
 
-
     // Implemented returning a Promise
-    test('Get returns JSON', () => {
+    test('GET /json', () => {
         return request(app)
         .get("/json")
         .then(response => {
@@ -48,20 +40,42 @@ describe('Web services work', () => {
         });
     });
 
-
-    test('POST returns JSON', (done) => {
+    // Implemented using done
+    test('POST returns json, using done', (done) => {
         request(app)
         .post("/post")
-        .set('content-type', 'application/json')
         .send({ a:2, b:3 })
+        .set('content-type', 'application/json')
+        .expect("Content-Type", /json/)
+        .expect(200)
         .then(response => {
             expect(response).not.toBeNull();
             expect(response).toBeDefined();
             expect(response.statusCode).toBe(200);
             expect(response.body).toHaveProperty('sum', 5);
-
             done();
-        });
+        })
     });
 
+    // Implemented using async/await
+    test('POST returns json, using async/await', async () => {
+        const response = await request(app)
+            .post("/post")
+            .send({ a:2, b:3 })
+            .set('content-type', 'application/json');
+        expect(response).not.toBeNull();
+        expect(response).toBeDefined();
+        expect(response.statusCode).toBe(200);
+        expect(response.body).toHaveProperty('sum', 5);
+    });
+
+
+
 });
+
+/*
+Problems with open handle:
+https://stackoverflow.com/questions/53935108/jest-did-not-exit-one-second-after-the-test-run-has-completed-using-express
+https://stackoverflow.com/questions/66997288/jest-tests-leaking-due-to-improper-teardown
+
+*/
