@@ -9,6 +9,8 @@ Boilerplate code to start express projects with Typescript
 |`yarn run test` |Run test cases |
 |`yarn run start`|Run in production|
 |`yarn run build`|Build the deployable version|
+|`yarn build`|Transpile the project|
+|`yarn clean`|Clean compiled files|
 
 
 For Mocha:
@@ -22,6 +24,10 @@ For Jest:
   "scripts": {
     "test": "jest --runInBand --detectOpenHandles",
 ```
+For creating a jest configuration:
+```
+npx ts-jest config:init
+```
 
 Another way of running Jest:
 `npx jest`
@@ -33,8 +39,9 @@ curl 'http://172.27.96.1:3000/'
 ```
 
 ## Testing Frameworks
-Chai, Mocha
-Jest : jest ts-jest @types/jest
+Mocha, Chai
+
+Jest, Supertest
 
 
 
@@ -48,6 +55,7 @@ Jest : jest ts-jest @types/jest
 [Testing Express Api with Jest and Supertest](https://dev.to/franciscomendes10866/testing-express-api-with-jest-and-supertest-3gf)  
 [Writing API Tests with Jest](https://www.rithmschool.com/courses/intermediate-node-express/api-tests-with-jest)  
 [Testing express js app (Typescript) using jest and supertest](https://medium.com/@natnael.awel/how-to-setup-testing-for-typescript-with-express-js-example-83d3efbb6fd4)  
+[Clean Architecture: TypeScript Express API](https://paulallies.medium.com/clean-architecture-typescript-express-api-b90846794998)  
 
 [TypeScript Unit Testing 101: A Developer’s Guide](https://www.testim.io/blog/typescript-unit-testing-101/)  
 
@@ -76,3 +84,6 @@ Jest : jest ts-jest @types/jest
 [jest](https://jestjs.io/docs/getting-started)  
 [Supertest](https://github.com/visionmedia/supertest#readme)  
 
+
+
+    "dev": "concurrently \"npx tsc --watch\" \"nodemon -q dist/src/server.js\""
