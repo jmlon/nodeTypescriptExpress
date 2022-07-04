@@ -49,6 +49,7 @@ Jest : jest ts-jest @types/jest
 
 
 ### Documentation
+[chai-expect api](https://www.chaijs.com/api/bdd/)  
 [chai-http](https://www.chaijs.com/plugins/chai-http/)  
 [chai-json](https://www.chaijs.com/plugins/chai-json/)  
 [mocha](https://mochajs.org/)  

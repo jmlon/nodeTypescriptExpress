@@ -1,17 +1,24 @@
-import { doesNotMatch } from 'assert';
+import { Server } from 'http';
 import request from 'supertest';
 // const app = require('../../src/app'); // Gives the famouos error: TypeError: app.address is not a function
-const app = require('../../src/server');
-
+// const app = require('../../src/server');
+import { app } from '../../src/app';
 
 describe('Web services work', () => {
 
-    beforeAll(() => {
+    let server: Server|null = null;
+
+    beforeAll((done) => {
         // Setup envinronment, e.g. database
+        server = app.listen(process.env.PORT, () => {
+            console.log(`Server running at http://${process.env.HOST}:${process.env.PORT}`);
+            done();
+        });
+        
     });
 
-    afterAll(() => {
-        // Dispose of envinronment
+    afterAll(async () => {
+        await server?.close();
     });
 
 
@@ -38,7 +45,6 @@ describe('Web services work', () => {
             expect(response).not.toBeNull();
             expect(response).toBeDefined();
             expect(response.status).toBe(200);
-
         });
     });
 

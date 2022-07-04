@@ -5,7 +5,7 @@
   "main": "server.js",
   "scripts": {
     "test": "mocha --require ts-node/register tests/*.ts --timeout 10000 --exit",
-    "testJest": "jest",
+    "testJest": "jest --detectOpenHandles",
     "build": "npx tsc",
     "start": "node dist/server.js",
     "dev": "concurrently \"npx tsc --watch\" \"nodemon -q dist/src/server.js\""
