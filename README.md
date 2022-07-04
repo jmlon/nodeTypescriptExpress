@@ -86,4 +86,3 @@ Jest, Supertest
 
 
 
-    "dev": "concurrently \"npx tsc --watch\" \"nodemon -q dist/src/server.js\""
