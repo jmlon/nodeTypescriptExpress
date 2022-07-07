@@ -65,6 +65,8 @@ Jest, Supertest
 
 [Introduction To Testing In JavaScript With Jest](https://youtu.be/FgnxcUQ5vho)  
 
+[How to Unit Test Express Middleware - Jest](https://medium.com/javascript-in-plain-english/how-to-unit-test-express-middleware-typescript-jest-c6a7ad166e74)  
+
 
 
 ### Testing with ts-node, mocha, chai
@@ -83,6 +85,9 @@ Jest, Supertest
 [mocha](https://mochajs.org/)  
 [jest](https://jestjs.io/docs/getting-started)  
 [Supertest](https://github.com/visionmedia/supertest#readme)  
+
+
+
 
 
 
